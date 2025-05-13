@@ -1,0 +1,9 @@
+{
+  "navigation": {
+    "home": "Home",
+    "about": "About"
+  },
+  "common": {
+    "welcome": "Welcome to our website"
+  }
+}
