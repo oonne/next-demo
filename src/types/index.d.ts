@@ -3,6 +3,19 @@ declare type Timer = ReturnType<typeof setTimeout> | null;
 declare type Interval = ReturnType<typeof setInterval> | null;
 
 // 多语言
+declare type LangCode =
+  | 'en'
+  | 'zh-CN'
+  | 'zh-TW'
+  | 'es'
+  | 'fr'
+  | 'ru'
+  | 'pt'
+  | 'de'
+  | 'ja'
+  | 'it'
+  | 'ko'
+  | 'vi';
 declare type LocaleType =
   | 'en_US'
   | 'zh_CN'
@@ -16,6 +29,7 @@ declare type LocaleType =
   | 'it_IT'
   | 'ko_KR'
   | 'vi_VN';
+
 declare interface ILangMsg {
   en_US: string; // 英文
   zh_CN: string; // 中文
@@ -33,3 +47,6 @@ declare interface ILangMsg {
 declare interface ILangMsgs {
   [key: string | number]: ILangMsg;
 }
+
+// 语言代码到区域设置代码的映射
+declare const LANG_LOCALE_MAP: Record<LangCode, LocaleType>;

@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { getDictionary } from '@/i18n';
 
 export default async function Home({ params: { lang } }: { params: { lang: string } }) {
-  const dict = await getDictionary(lang as 'en' | 'zh');
+  const dict = await getDictionary(lang as LangCode);
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
