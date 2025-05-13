@@ -1,7 +1,8 @@
 import Link from 'next/link';
 import { getDictionary } from '@/i18n';
 
-export default async function Home({ params: { lang } }: { params: { lang: string } }) {
+export default async function Home({ params }: { params: { lang: string } }) {
+  const { lang } = await params;
   const dict = await getDictionary(lang as LangCode);
 
   return (
