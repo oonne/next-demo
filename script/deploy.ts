@@ -30,7 +30,7 @@ const main = async () => {
 
   // 合并代码
   console.log('合并代码...');
-  runGitCommand(`git merge ${currentBranch}`);
+  runGitCommand(`git merge -X ours ${currentBranch}`);
 
   // 推送到远程
   console.log('推送到远程仓库...');
@@ -41,7 +41,7 @@ const main = async () => {
   runGitCommand(`git checkout ${currentBranch}`);
 };
 
-main().catch((error) => {
+main().catch(error => {
   console.error('部署过程中发生错误:', error);
   process.exit(1);
 });
