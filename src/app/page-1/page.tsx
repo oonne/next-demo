@@ -1,5 +1,6 @@
 import HeaderNav from '@/components/header-nav/header-nav';
 import RandomChars from '@/components/random-chars/ramdom-chars';
+import Counter from '@/components/counter/counter';
 
 export const runtime = 'edge';
 
@@ -10,9 +11,15 @@ const Page1 = () => {
 
       <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
         <div>
-          <h1>hello page-1</h1>
+          <h1>页面1</h1>
+        </div>
 
+        <div>
           <RandomChars />
+        </div>
+
+        <div>
+          <Counter />
         </div>
       </main>
     </div>
