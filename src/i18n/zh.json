@@ -1,9 +1,4 @@
 {
-  "navigation": {
-    "home": "首页",
-    "about": "关于"
-  },
-  "common": {
-    "welcome": "欢迎访问我们的网站"
-  }
+  "home": "首页",
+  "about": "关于"
 }

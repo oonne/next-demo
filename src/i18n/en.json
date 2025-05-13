@@ -1,9 +1,4 @@
 {
-  "navigation": {
-    "home": "Home",
-    "about": "About"
-  },
-  "common": {
-    "welcome": "Welcome to our website"
-  }
+  "home": "Home",
+  "about": "About"
 }
