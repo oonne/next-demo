@@ -11,7 +11,7 @@ const Home = () => {
         <Image src="/img/logo.png" alt="logo" width={180} height={38} priority />
         <div>
           <h1>首页</h1>
-          <Link href="/page-1">跳转到page-1</Link>
+          <Link href="/page-1">跳转到页面1</Link>
         </div>
       </main>
     </div>
