@@ -30,7 +30,9 @@ const main = async () => {
 
   // 合并代码
   console.log('合并代码...');
-  runGitCommand(`git merge -X ours ${currentBranch}`);
+  runGitCommand(
+    `git merge -X ours -m "Merge ${currentBranch} into ${targetBranch}" ${currentBranch}`,
+  );
 
   // 推送到远程
   console.log('推送到远程仓库...');
