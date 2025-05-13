@@ -11,6 +11,7 @@ Next-demo
 - 服务端渲染
 - 常用utils
 
-- 环境变量
 - 国际化
-- SEO
+- 环境变量
+- SEO TDK
+- SEO sitemap

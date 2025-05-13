@@ -8,8 +8,42 @@ const loadedModules = {
   link: LinkMsgs,
 };
 
-export const getDictionary = async (locale: 'en' | 'zh') => {
-  const localeKey = locale === 'en' ? 'en_US' : 'zh_CN';
+// 支持的语言类型
+type SupportedLocale =
+  | 'en_US'
+  | 'zh_CN'
+  | 'zh_TW'
+  | 'es_ES'
+  | 'fr_FR'
+  | 'ru_RU'
+  | 'pt_PT'
+  | 'de_DE'
+  | 'ja_JP'
+  | 'it_IT'
+  | 'ko_KR'
+  | 'vi_VN';
+
+// 将短语言代码转换为完整的区域设置代码
+const getFullLocale = (locale: string): SupportedLocale => {
+  const localeMap: Record<string, SupportedLocale> = {
+    en: 'en_US',
+    zh: 'zh_CN',
+    es: 'es_ES',
+    fr: 'fr_FR',
+    ru: 'ru_RU',
+    pt: 'pt_PT',
+    de: 'de_DE',
+    ja: 'ja_JP',
+    it: 'it_IT',
+    ko: 'ko_KR',
+    vi: 'vi_VN',
+  };
+
+  return localeMap[locale] || 'en_US';
+};
+
+export const getDictionary = async (locale: string) => {
+  const localeKey = getFullLocale(locale);
   const dictionary: Record<string, string> = {};
 
   // 合并所有模块的翻译
