@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { getDictionary } from '@/i18n';
 
 export default async function Home({ params: { lang } }: { params: { lang: string } }) {
@@ -11,6 +12,8 @@ export default async function Home({ params: { lang } }: { params: { lang: strin
           <li>{dict.link_friend}</li>
         </ul>
       </nav>
+
+      <Link href="/page-1">跳转到页面1</Link>
     </main>
   );
 }

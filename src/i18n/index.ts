@@ -8,24 +8,9 @@ const loadedModules = {
   link: LinkMsgs,
 };
 
-// 支持的语言类型
-type SupportedLocale =
-  | 'en_US'
-  | 'zh_CN'
-  | 'zh_TW'
-  | 'es_ES'
-  | 'fr_FR'
-  | 'ru_RU'
-  | 'pt_PT'
-  | 'de_DE'
-  | 'ja_JP'
-  | 'it_IT'
-  | 'ko_KR'
-  | 'vi_VN';
-
 // 将短语言代码转换为完整的区域设置代码
-const getFullLocale = (locale: string): SupportedLocale => {
-  const localeMap: Record<string, SupportedLocale> = {
+const getFullLocale = (locale: string): LocaleType => {
+  const localeMap: Record<string, LocaleType> = {
     en: 'en_US',
     'zh-CN': 'zh_CN',
     'zh-TW': 'zh_TW',
