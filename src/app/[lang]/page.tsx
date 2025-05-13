@@ -1,4 +1,4 @@
-import { getDictionary } from '../dictionaries';
+import { getDictionary } from '@/i18n';
 
 export default async function Home({ params: { lang } }: { params: { lang: string } }) {
   const dict = await getDictionary(lang as 'en' | 'zh');
