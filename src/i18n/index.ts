@@ -27,7 +27,8 @@ type SupportedLocale =
 const getFullLocale = (locale: string): SupportedLocale => {
   const localeMap: Record<string, SupportedLocale> = {
     en: 'en_US',
-    zh: 'zh_CN',
+    'zh-CN': 'zh_CN',
+    'zh-TW': 'zh_TW',
     es: 'es_ES',
     fr: 'fr_FR',
     ru: 'ru_RU',

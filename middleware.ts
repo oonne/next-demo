@@ -4,7 +4,7 @@ import { match } from '@formatjs/intl-localematcher';
 import Negotiator from 'negotiator';
 
 // 定义支持的语言
-const locales = ['en', 'zh', 'es', 'fr', 'ru', 'pt', 'de', 'ja', 'it', 'ko', 'vi'];
+const locales = ['en', 'zh-CN', 'zh-TW', 'es', 'fr', 'ru', 'pt', 'de', 'ja', 'it', 'ko', 'vi'];
 const defaultLocale = 'en';
 
 // 获取用户首选语言
@@ -18,7 +18,8 @@ function getLocale(request: NextRequest) {
   // 将语言代码转换为对应的区域设置代码
   const localeMap: Record<string, string> = {
     en: 'en_US',
-    zh: 'zh_CN',
+    'zh-CN': 'zh_CN',
+    'zh-TW': 'zh_TW',
     es: 'es_ES',
     fr: 'fr_FR',
     ru: 'ru_RU',
