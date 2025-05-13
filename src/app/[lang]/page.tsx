@@ -7,8 +7,8 @@ export default async function Home({ params: { lang } }: { params: { lang: strin
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <nav>
         <ul>
-          <li>{dict.home}</li>
-          <li>{dict.about}</li>
+          <li>{dict.link_home}</li>
+          <li>{dict.link_friend}</li>
         </ul>
       </nav>
     </main>

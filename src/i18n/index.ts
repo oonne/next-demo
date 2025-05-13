@@ -1,10 +1,23 @@
 import 'server-only';
 
-const dictionaries = {
-  en: () => import('./en.json').then(module => module.default),
-  zh: () => import('./zh.json').then(module => module.default),
+import BasicMsgs from './modules/basic';
+import LinkMsgs from './modules/link';
+
+const loadedModules = {
+  basic: BasicMsgs,
+  link: LinkMsgs,
 };
 
 export const getDictionary = async (locale: 'en' | 'zh') => {
-  return dictionaries[locale]();
+  const localeKey = locale === 'en' ? 'en_US' : 'zh_CN';
+  const dictionary: Record<string, string> = {};
+
+  // 合并所有模块的翻译
+  Object.values(loadedModules).forEach(module => {
+    Object.entries(module).forEach(([key, value]) => {
+      dictionary[key] = value[localeKey];
+    });
+  });
+
+  return dictionary;
 };

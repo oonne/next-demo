@@ -2,7 +2,7 @@
  * 国际化翻译
  */
 const msg: ILangMsgs = {
-  home: {
+  link_home: {
     en_US: 'Home',
     zh_CN: '首页',
     zh_TW: '首頁',
@@ -16,7 +16,7 @@ const msg: ILangMsgs = {
     ko_KR: '홈',
     vi_VN: 'Trang chủ',
   },
-  friend_link: {
+  link_friend: {
     en_US: 'Friend Link',
     zh_CN: '友情链接',
     zh_TW: '友情鏈接',
