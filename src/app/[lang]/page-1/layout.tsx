@@ -8,3 +8,7 @@ export const metadata: Metadata = {
   description: '页面1 description',
   keywords: ['页面1'],
 };
+
+export default function Page1Layout({ children }: { children: React.ReactNode }) {
+  return <>{children}</>;
+}
