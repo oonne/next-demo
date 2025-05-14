@@ -6,12 +6,14 @@ Next-demo
 
 - prettier
 - 部署到cloudflare
-- 静态资源图片
-- 自定义组件
-- 服务端渲染
+- 服务端渲染/混合渲染
 - 常用utils
+- 根据国际化生成多套静态页面
+- 静态图片资源
 
-- 国际化
 - 环境变量
+- 全局css
+- 自定义字体
 - SEO TDK
 - SEO sitemap
+- SEO canonical
