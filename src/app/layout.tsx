@@ -17,6 +17,8 @@ export const metadata: Metadata = {
   description: 'Next 示例项目',
 };
 
+export const runtime = 'edge';
+
 const RootLayout = async ({
   children,
   params,
