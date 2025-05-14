@@ -17,12 +17,14 @@ export const metadata: Metadata = {
   description: 'Next 示例项目',
 };
 
+export const runtime = 'edge';
+
 const RootLayout = async ({
   children,
   params,
 }: {
   children: React.ReactNode;
-  params: Promise<{ lang: string }>;
+  params: { lang: string };
 }) => {
   const { lang } = await params;
   return (

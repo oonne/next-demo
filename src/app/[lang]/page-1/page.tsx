@@ -3,8 +3,6 @@ import RandomChars from '@/components/random-chars/ramdom-chars';
 import Counter from '@/components/counter/counter';
 import { getDictionary } from '@/i18n';
 
-export const runtime = 'edge';
-
 const Page1 = async ({ params }: { params: Promise<{ lang: string }> }) => {
   const { lang } = await params;
   const dict = await getDictionary(lang as LangCode);
