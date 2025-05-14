@@ -11,6 +11,12 @@ export function middleware(request: NextRequest) {
   );
 
   if (pathnameHasLocale) {
+    // 如果访问的是 /${DEFAULT_LANGUAGE}，重定向到首页
+    if (pathname === `/${DEFAULT_LANGUAGE}`) {
+      const url = request.nextUrl.clone();
+      url.pathname = '/';
+      return NextResponse.redirect(url);
+    }
     return;
   }
 
