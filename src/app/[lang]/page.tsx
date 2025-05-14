@@ -12,6 +12,7 @@ const Home = async ({ params }: { params: Promise<{ lang: string }> }) => {
         <ul>
           <li>{dict.link_home}</li>
           <li>{dict.link_friend}</li>
+          <li>{process.env.ENV_NAME}</li>
         </ul>
       </nav>
 
