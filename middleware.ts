@@ -1,19 +1,26 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
+import { SUPPORTED_LANGUAGES, DEFAULT_LANGUAGE, LANG_LOCALE_MAP } from '@/i18n/config';
 
 export function middleware(request: NextRequest) {
-  // 获取当前请求的路径
-  const path = request.nextUrl.pathname;
+  const pathname = request.nextUrl.pathname;
 
-  // 如果路径不存在（404），重定向到首页
-  if (path === '/404') {
-    return NextResponse.redirect(new URL('/', request.url));
-  }
+  // 检查路径是否已经包含语言前缀
+  const pathnameHasLocale = SUPPORTED_LANGUAGES.some(
+    locale => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`,
+  );
 
-  return NextResponse.next();
+  if (pathnameHasLocale) return;
+
+  // 重定向到英文路径
+  const locale = LANG_LOCALE_MAP[DEFAULT_LANGUAGE];
+  request.nextUrl.pathname = `/${locale}${pathname}`;
+  return NextResponse.redirect(request.nextUrl);
 }
 
-// 配置需要匹配的路径
 export const config = {
-  matcher: ['/404'],
+  matcher: [
+    // 跳过所有内部路径 (_next)
+    '/((?!_next|api|_vercel|.*\\..*).*)',
+  ],
 };

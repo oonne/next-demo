@@ -17,9 +17,16 @@ export const metadata: Metadata = {
   description: 'Next 示例项目',
 };
 
-const RootLayout = ({ children }: { children: React.ReactNode }) => {
+const RootLayout = async ({
+  children,
+  params,
+}: {
+  children: React.ReactNode;
+  params: { lang: string };
+}) => {
+  const { lang } = await params;
   return (
-    <html lang="en">
+    <html lang={lang}>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>{children}</body>
     </html>
   );

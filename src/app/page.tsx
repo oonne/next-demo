@@ -1,21 +1,6 @@
-import Image from 'next/image';
-import Link from 'next/link';
-import HeaderNav from '@/components/header-nav/header-nav';
+import { redirect } from 'next/navigation';
+import { DEFAULT_LANGUAGE } from '@/i18n/config';
 
-const Home = () => {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <HeaderNav />
-
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image src="/img/logo.png" alt="logo" width={180} height={38} priority />
-        <div>
-          <h1>首页</h1>
-          <Link href="/page-1">跳转到页面1</Link>
-        </div>
-      </main>
-    </div>
-  );
-};
-
-export default Home;
+export default function RootPage() {
+  redirect(`/${DEFAULT_LANGUAGE}`);
+}
