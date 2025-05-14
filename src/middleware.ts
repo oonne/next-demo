@@ -16,8 +16,14 @@ export function middleware(request: NextRequest) {
 
   // 如果路径没有包含语言前缀，则默认为英文
   const url = request.nextUrl.clone();
+  // 首页保留原路径
+  if (pathname === '/') {
+    url.pathname = `/${DEFAULT_LANGUAGE}`;
+    return NextResponse.rewrite(url);
+  }
+  // 子页面重定向
   url.pathname = `/${DEFAULT_LANGUAGE}${pathname}`;
-  return NextResponse.rewrite(url);
+  return NextResponse.redirect(url);
 }
 
 export const config = {
