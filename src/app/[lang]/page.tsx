@@ -2,7 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { getDictionary } from '@/i18n';
 
-const Home = async ({ params }: { params: { lang: string } }) => {
+const Home = async ({ params }: { params: Promise<{ lang: string }> }) => {
   const { lang } = await params;
   const dict = await getDictionary(lang as LangCode);
 
