@@ -13,11 +13,14 @@ const Home = async ({ params }: { params: Promise<{ lang: string }> }) => {
           <li>{dict.link_home}</li>
           <li>{dict.link_friend}</li>
           <li>本地环境变量: {process.env.NEXT_PUBLIC_ENV_NAME}</li>
-          <li>cloudflare配置的环境变量: {process.env.SERVER_ENV_VAR}</li>
         </ul>
       </nav>
 
       <Image src="/img/logo.png" alt="logo" width={180} height={180} priority />
+
+      <div className="font-zqk text-4xl">
+        <h1>自定义字体: Hello World</h1>
+      </div>
 
       <Link href={`/${lang}/page-1`}>跳转到页面1</Link>
     </main>
