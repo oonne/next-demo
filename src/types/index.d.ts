@@ -47,6 +47,3 @@ declare interface ILangMsg {
 declare interface ILangMsgs {
   [key: string | number]: ILangMsg;
 }
-
-// 语言代码到区域设置代码的映射
-declare const LANG_LOCALE_MAP: Record<LangCode, LocaleType>;

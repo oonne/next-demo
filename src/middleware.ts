@@ -1,27 +1,23 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
-import { SUPPORTED_LANGUAGES, DEFAULT_LANGUAGE, LANG_LOCALE_MAP } from '@/i18n/config';
+import { SUPPORTED_LANGUAGES, DEFAULT_LANGUAGE } from '@/i18n/config';
 
 export function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
 
-  // 检查路径是否已经包含语言前缀
+  // 检查路径是否已经包含语言前缀，如果包含，不需要重定向
   const pathnameHasLocale = SUPPORTED_LANGUAGES.some(
     locale => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`,
   );
 
-  console.log('Pathname has locale:', pathnameHasLocale);
-
   if (pathnameHasLocale) {
-    console.log('Path already has locale, skipping redirect');
     return;
   }
 
-  // 重定向到英文路径
-  const locale = LANG_LOCALE_MAP[DEFAULT_LANGUAGE];
-  console.log('Redirecting to:', `/${locale}${pathname}`);
-  request.nextUrl.pathname = `/${locale}${pathname}`;
-  return NextResponse.redirect(request.nextUrl);
+  // 如果路径没有包含语言前缀，则默认为英文
+  const url = request.nextUrl.clone();
+  url.pathname = `/${DEFAULT_LANGUAGE}${pathname}`;
+  return NextResponse.rewrite(url);
 }
 
 export const config = {
