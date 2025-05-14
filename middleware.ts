@@ -1,19 +1,6 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
-import { match } from '@formatjs/intl-localematcher';
-import Negotiator from 'negotiator';
 import { SUPPORTED_LANGUAGES, DEFAULT_LANGUAGE, LANG_LOCALE_MAP } from '@/i18n/config';
-
-// 获取用户首选语言
-function getLocale(request: NextRequest) {
-  const negotiatorHeaders: Record<string, string> = {};
-  request.headers.forEach((value, key) => (negotiatorHeaders[key] = value));
-
-  const languages = new Negotiator({ headers: negotiatorHeaders }).languages();
-  const matchedLocale = match(languages, SUPPORTED_LANGUAGES, DEFAULT_LANGUAGE);
-
-  return LANG_LOCALE_MAP[matchedLocale as LangCode] || LANG_LOCALE_MAP[DEFAULT_LANGUAGE];
-}
 
 export function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
@@ -25,8 +12,8 @@ export function middleware(request: NextRequest) {
 
   if (pathnameHasLocale) return;
 
-  // 重定向到带语言前缀的路径
-  const locale = getLocale(request);
+  // 重定向到英文路径
+  const locale = LANG_LOCALE_MAP[DEFAULT_LANGUAGE];
   request.nextUrl.pathname = `/${locale}${pathname}`;
   return NextResponse.redirect(request.nextUrl);
 }
