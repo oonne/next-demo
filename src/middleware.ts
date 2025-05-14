@@ -34,7 +34,7 @@ export function middleware(request: NextRequest) {
 
 export const config = {
   matcher: [
-    // 跳过所有内部路径 (_next)
+    // 匹配所有路径，包括不存在的页面
     '/((?!_next|api|_vercel|.*\\..*).*)',
   ],
 };
