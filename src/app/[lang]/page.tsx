@@ -18,6 +18,10 @@ const Home = async ({ params }: { params: Promise<{ lang: string }> }) => {
 
       <Image src="/img/logo.png" alt="logo" width={180} height={180} priority />
 
+      <div className="font-zqk text-4xl">
+        <h1>自定义字体: Hello World</h1>
+      </div>
+
       <Link href={`/${lang}/page-1`}>跳转到页面1</Link>
     </main>
   );
