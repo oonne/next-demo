@@ -5,7 +5,7 @@ import { getDictionary } from '@/i18n';
 
 export const runtime = 'edge';
 
-const Page1 = async ({ params }: { params: { lang: string } }) => {
+const Page1 = async ({ params }: { params: Promise<{ lang: string }> }) => {
   const { lang } = await params;
   const dict = await getDictionary(lang as LangCode);
 
