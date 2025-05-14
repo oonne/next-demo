@@ -12,7 +12,8 @@ const Home = async ({ params }: { params: Promise<{ lang: string }> }) => {
         <ul>
           <li>{dict.link_home}</li>
           <li>{dict.link_friend}</li>
-          <li>{process.env.ENV_NAME}</li>
+          <li>本地环境变量: {process.env.NEXT_PUBLIC_ENV_NAME}</li>
+          <li>cloudflare配置的环境变量: {process.env.SERVER_ENV_VAR}</li>
         </ul>
       </nav>
 
