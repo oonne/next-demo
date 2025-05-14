@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { getDictionary } from '@/i18n';
 
 export default async function Home({ params }: { params: { lang: string } }) {
@@ -14,7 +15,9 @@ export default async function Home({ params }: { params: { lang: string } }) {
         </ul>
       </nav>
 
-      <Link href="/page-1">跳转到页面1</Link>
+      <Image src="/img/logo.png" alt="logo" width={180} height={38} priority />
+
+      <Link href={`/${lang}/page-1`}>跳转到页面1</Link>
     </main>
   );
 }
