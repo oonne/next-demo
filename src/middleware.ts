@@ -10,10 +10,16 @@ export function middleware(request: NextRequest) {
     locale => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`,
   );
 
-  if (pathnameHasLocale) return;
+  console.log('Pathname has locale:', pathnameHasLocale);
+
+  if (pathnameHasLocale) {
+    console.log('Path already has locale, skipping redirect');
+    return;
+  }
 
   // 重定向到英文路径
   const locale = LANG_LOCALE_MAP[DEFAULT_LANGUAGE];
+  console.log('Redirecting to:', `/${locale}${pathname}`);
   request.nextUrl.pathname = `/${locale}${pathname}`;
   return NextResponse.redirect(request.nextUrl);
 }
