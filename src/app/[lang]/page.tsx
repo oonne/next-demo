@@ -15,7 +15,7 @@ const Home = async ({ params }: { params: { lang: string } }) => {
         </ul>
       </nav>
 
-      <Image src="/img/logo.png" alt="logo" width={180} height={38} priority />
+      <Image src="/img/logo.png" alt="logo" width={180} height={180} priority />
 
       <Link href={`/${lang}/page-1`}>跳转到页面1</Link>
     </main>
