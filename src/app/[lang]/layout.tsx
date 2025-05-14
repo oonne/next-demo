@@ -16,11 +16,12 @@ const geistMono = Geist_Mono({
 });
 
 /*
- * 元数据
+ * SEO TDK
  */
 export const metadata: Metadata = {
   title: 'Next Demo',
-  description: 'Next 示例项目',
+  description: 'Next 示例项目 description',
+  keywords: ['Next'],
 };
 
 /*
