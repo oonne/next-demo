@@ -2,7 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { getDictionary } from '@/i18n';
 
-export default async function Home({ params }: { params: { lang: string } }) {
+const Home = async ({ params }: { params: { lang: string } }) => {
   const { lang } = await params;
   const dict = await getDictionary(lang as LangCode);
 
@@ -20,4 +20,6 @@ export default async function Home({ params }: { params: { lang: string } }) {
       <Link href={`/${lang}/page-1`}>跳转到页面1</Link>
     </main>
   );
-}
+};
+
+export default Home;
