@@ -1,6 +1,9 @@
 import type { MetadataRoute } from 'next';
 import { SUPPORTED_LANGUAGES, DEFAULT_LANGUAGE } from '@/i18n/config';
 
+/*
+ * 生成 sitemap
+ */
 export default function sitemap(): MetadataRoute.Sitemap {
   const domain = process.env.NEXT_PUBLIC_DOMIAN || '';
   if (!domain) {
@@ -42,21 +45,22 @@ export default function sitemap(): MetadataRoute.Sitemap {
       });
     }
 
-    // 这里可以添加其他页面的 URL
-    // 例如：about, blog 等页面
-    const pages = ['about', 'blog'];
-    pages.forEach(page => {
-      urls.push({
-        url: `${domain}/${lang}/${page}`,
-        lastModified: new Date(),
-        changeFrequency: 'weekly',
-        priority: 0.8,
-        alternates: {
-          languages: {
-            ...Object.fromEntries(SUPPORTED_LANGUAGES.map(l => [l, `${domain}/${l}/${page}`])),
-          },
+    // 处理 page-1 页面
+    urls.push({
+      url: `${domain}/${lang}/page-1`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.8,
+      alternates: {
+        languages: {
+          ...Object.fromEntries(
+            SUPPORTED_LANGUAGES.map(l => [
+              l,
+              l === DEFAULT_LANGUAGE ? `${domain}/page-1` : `${domain}/${l}/page-1`,
+            ]),
+          ),
         },
-      });
+      },
     });
   });
 
