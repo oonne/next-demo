@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
+import { DEFAULT_LANGUAGE } from '@/i18n/config';
 import '@/style/globals.css';
 
 /*
@@ -18,11 +19,26 @@ const geistMono = Geist_Mono({
 /*
  * SEO TDK
  */
-export const metadata: Metadata = {
-  title: 'Next Demo',
-  description: 'Next 示例项目 description',
-  keywords: ['Next'],
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ lang: string }>;
+}): Promise<Metadata> {
+  const { lang } = await params;
+  let canonical = process.env.NEXT_PUBLIC_DOMIAN;
+  if (lang !== DEFAULT_LANGUAGE) {
+    canonical = `${process.env.NEXT_PUBLIC_DOMIAN}/${lang}`;
+  }
+
+  return {
+    title: 'Next Demo',
+    description: 'Next 示例项目 description',
+    keywords: ['Next'],
+    alternates: {
+      canonical,
+    },
+  };
+}
 
 /*
  * 运行时 必须设置为edge，以支持国际化和服务端渲染
