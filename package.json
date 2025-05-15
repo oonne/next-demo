@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "deploy": "tsx script/deploy.ts"
+    "deploy": "tsx script/deploy.ts",
+    "generate-sitemap": "tsx script/generate-sitemap.ts"
   },
   "dependencies": {
     "@types/big.js": "^6.2.2",
