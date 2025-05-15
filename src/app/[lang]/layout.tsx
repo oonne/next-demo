@@ -18,11 +18,16 @@ const geistMono = Geist_Mono({
 /*
  * SEO TDK
  */
-export const metadata: Metadata = {
-  title: 'Next Demo',
-  description: 'Next 示例项目 description',
-  keywords: ['Next'],
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return {
+    title: 'Next Demo',
+    description: 'Next 示例项目 description',
+    keywords: ['Next'],
+    alternates: {
+      canonical: process.env.NEXT_PUBLIC_DOMIAN,
+    },
+  };
+}
 
 /*
  * 运行时 必须设置为edge，以支持国际化和服务端渲染
