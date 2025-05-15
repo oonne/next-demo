@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
+import { DEFAULT_LANGUAGE } from '@/i18n/config';
 import '@/style/globals.css';
 
 /*
@@ -18,13 +19,23 @@ const geistMono = Geist_Mono({
 /*
  * SEO TDK
  */
-export async function generateMetadata(): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ lang: string }>;
+}): Promise<Metadata> {
+  const { lang } = await params;
+  let canonical = process.env.NEXT_PUBLIC_DOMIAN;
+  if (lang !== DEFAULT_LANGUAGE) {
+    canonical = `${process.env.NEXT_PUBLIC_DOMIAN}/${lang}`;
+  }
+
   return {
     title: 'Next Demo',
     description: 'Next 示例项目 description',
     keywords: ['Next'],
     alternates: {
-      canonical: process.env.NEXT_PUBLIC_DOMIAN,
+      canonical,
     },
   };
 }
