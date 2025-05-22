@@ -1,9 +1,10 @@
-import { useTranslations } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
 import Image from 'next/image';
 import Link from 'next/link';
 
-const Home = () => {
-  const t = useTranslations();
+const Home = async ({ params }: { params: Promise<{ lang: string }> }) => {
+  const t = await getTranslations();
+  const { lang } = await params;
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
@@ -20,7 +21,7 @@ const Home = () => {
         <h1>自定义字体: Hello World</h1>
       </div>
 
-      <Link href={`page-1`}>跳转到页面1</Link>
+      <Link href={`/${lang}/page-1`}>跳转到页面1</Link>
     </main>
   );
 };

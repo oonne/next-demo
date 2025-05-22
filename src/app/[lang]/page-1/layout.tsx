@@ -1,20 +1,18 @@
+import { getLocale } from 'next-intl/server';
 import type { Metadata } from 'next';
 
 /*
  * SEO TDK
  */
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ lang: string }>;
-}): Promise<Metadata> {
-  const { lang } = await params;
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = await getLocale();
+
   return {
     title: 'Next Demo Page-1',
     description: '页面1 description',
     keywords: ['页面1'],
     alternates: {
-      canonical: `${process.env.NEXT_PUBLIC_DOMIAN}/${lang}/page-1`,
+      canonical: `${process.env.NEXT_PUBLIC_DOMIAN}/${locale}/page-1`,
     },
   };
 }
