@@ -16,6 +16,22 @@ const msg: ILangMsgs = {
     ko_KR: '한국어',
     vi_VN: 'Tiếng Việt',
   },
+
+  // 测试插值
+  test_interpolation: {
+    en_US: 'Hello, {name}!',
+    zh_CN: '你好，{name}！',
+    zh_TW: '你好，{name}！',
+    es_ES: 'Hola, {name}!',
+    fr_FR: 'Bonjour, {name}!',
+    ru_RU: 'Привет, {name}!',
+    pt_PT: 'Olá, {name}!',
+    de_DE: 'Hallo, {name}!',
+    ja_JP: 'こんにちは, {name}!',
+    it_IT: 'Ciao, {name}!',
+    ko_KR: '안녕하세요, {name}!',
+    vi_VN: 'Xin chào, {name}!',
+  },
 };
 
 export default msg;

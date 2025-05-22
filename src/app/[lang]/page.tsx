@@ -11,6 +11,7 @@ const Home = async ({ params }: { params: Promise<{ lang: string }> }) => {
       <nav>
         <ul>
           <h1>{t('link_home')}</h1>
+          <h1>{t('test_interpolation', { name: 'John' })}</h1>
           <li>本地环境变量: {process.env.NEXT_PUBLIC_ENV_NAME}</li>
         </ul>
       </nav>
