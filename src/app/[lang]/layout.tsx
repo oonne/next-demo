@@ -1,6 +1,8 @@
-import type { Metadata } from 'next';
+import { NextIntlClientProvider } from 'next-intl';
+import { getLocale } from 'next-intl/server';
 import { Geist, Geist_Mono } from 'next/font/google';
 import { DEFAULT_LANGUAGE } from '@/i18n/config';
+import type { Metadata } from 'next';
 import '@/style/globals.css';
 
 /*
@@ -19,19 +21,15 @@ const geistMono = Geist_Mono({
 /*
  * SEO TDK
  */
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ lang: string }>;
-}): Promise<Metadata> {
-  const { lang } = await params;
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = await getLocale();
   let canonical = process.env.NEXT_PUBLIC_DOMIAN;
-  if (lang !== DEFAULT_LANGUAGE) {
-    canonical = `${process.env.NEXT_PUBLIC_DOMIAN}/${lang}`;
+  if (locale !== DEFAULT_LANGUAGE) {
+    canonical = `${process.env.NEXT_PUBLIC_DOMIAN}/${locale}`;
   }
 
   return {
-    title: 'Next Demo',
+    title: `Next Demo`,
     description: 'Next 示例项目 description',
     keywords: ['Next'],
     alternates: {
@@ -48,17 +46,14 @@ export const runtime = 'edge';
 /*
  * 基础布局
  */
-const RootLayout = async ({
-  children,
-  params,
-}: {
-  children: React.ReactNode;
-  params: Promise<{ lang: string }>;
-}) => {
-  const { lang } = await params;
+const RootLayout = async ({ children }: { children: React.ReactNode }) => {
+  const locale = await getLocale();
+
   return (
-    <html lang={lang}>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>{children}</body>
+    <html lang={locale}>
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        <NextIntlClientProvider>{children}</NextIntlClientProvider>
+      </body>
     </html>
   );
 };
