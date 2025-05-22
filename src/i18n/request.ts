@@ -1,7 +1,7 @@
 import 'server-only';
 import { getRequestConfig } from 'next-intl/server';
 import { hasLocale } from 'next-intl';
-import { routing } from './routing';
+import { SUPPORTED_LANGUAGES, DEFAULT_LANGUAGE } from './config';
 
 import BasicMsgs from './modules/basic';
 import LinkMsgs from './modules/link';
@@ -35,9 +35,7 @@ export default getRequestConfig(async ({ requestLocale }) => {
   // Typically corresponds to the `[locale]` segment
   const requested = await requestLocale;
 
-  console.log('requested', requested);
-
-  const locale = hasLocale(routing.locales, requested) ? requested : routing.defaultLocale;
+  const locale = hasLocale(SUPPORTED_LANGUAGES, requested) ? requested : DEFAULT_LANGUAGE;
   const localeKey = getFullLocale(locale);
   const dictionary: Record<string, string> = {};
 
