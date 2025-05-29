@@ -12,7 +12,7 @@ export async function generateMetadata(): Promise<Metadata> {
     description: '页面1 description',
     keywords: ['页面1'],
     alternates: {
-      canonical: `${process.env.NEXT_PUBLIC_DOMIAN}/${locale}/page-1`,
+      canonical: `${process.env.NEXT_PUBLIC_DOMAIN}/${locale}/page-1`,
     },
   };
 }

@@ -24,9 +24,9 @@ const geistMono = Geist_Mono({
  */
 export async function generateMetadata(): Promise<Metadata> {
   const locale = await getLocale();
-  let canonical = process.env.NEXT_PUBLIC_DOMIAN;
+  let canonical = process.env.NEXT_PUBLIC_DOMAIN;
   if (locale !== DEFAULT_LANGUAGE) {
-    canonical = `${process.env.NEXT_PUBLIC_DOMIAN}/${locale}`;
+    canonical = `${process.env.NEXT_PUBLIC_DOMAIN}/${locale}`;
   }
 
   return {

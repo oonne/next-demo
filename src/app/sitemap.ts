@@ -1,12 +1,12 @@
-import type { MetadataRoute } from 'next'
-import { SUPPORTED_LANGUAGES, DEFAULT_LANGUAGE } from '@/i18n/config'
+import type { MetadataRoute } from 'next';
+import { SUPPORTED_LANGUAGES, DEFAULT_LANGUAGE } from '@/i18n/config';
 
 /*
  * 生成 sitemap
  */
 export default function sitemap(): MetadataRoute.Sitemap {
-  const domain = process.env.NEXT_PUBLIC_DOMIAN || ''
-  const urls: MetadataRoute.Sitemap = []
+  const domain = process.env.NEXT_PUBLIC_DOMAIN || '';
+  const urls: MetadataRoute.Sitemap = [];
 
   // 为每种语言生成 URL
   SUPPORTED_LANGUAGES.forEach(lang => {
@@ -24,7 +24,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
             ),
           },
         },
-      })
+      });
     } else {
       urls.push({
         url: `${domain}/${lang}`,
@@ -38,11 +38,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
             ),
           },
         },
-      })
+      });
     }
 
     // 处理其他页面
-    
+
     urls.push({
       url: `${domain}/${lang}/page-1`,
       lastModified: new Date(),
@@ -50,16 +50,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
       alternates: {
         languages: {
-          ...Object.fromEntries(
-            SUPPORTED_LANGUAGES.map(l => [
-              l,
-              `${domain}/${l}/page-1`,
-            ]),
-          ),
+          ...Object.fromEntries(SUPPORTED_LANGUAGES.map(l => [l, `${domain}/${l}/page-1`])),
         },
       },
-    })
-  })
+    });
+  });
 
-  return urls
+  return urls;
 }
